@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccesLayer.EntitiyFramework
 {
-    class EfContactDal
+  public  class EfContactDal
     {
     }
 }

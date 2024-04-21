@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccesLayer.EntitiyFramework
 {
-    class EfHeadlingDal
+ public   class EfHeadlingDal
     {
     }
 }
