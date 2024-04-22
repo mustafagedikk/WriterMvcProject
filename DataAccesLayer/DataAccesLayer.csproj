@@ -65,7 +65,7 @@
     <Compile Include="EntitiyFramework\EfAboutDal.cs" />
     <Compile Include="EntitiyFramework\EfContactDal.cs" />
     <Compile Include="EntitiyFramework\EfContentDal.cs" />
-    <Compile Include="EntitiyFramework\EfHeadlingDal.cs" />
+    <Compile Include="EntitiyFramework\EfHeadingDal.cs" />
     <Compile Include="EntitiyFramework\EfWriterDal.cs" />
     <Compile Include="Migrations\202404191307437_mig1.cs" />
     <Compile Include="Migrations\202404191307437_mig1.designer.cs">
@@ -74,6 +74,14 @@
     <Compile Include="Migrations\202404212151163_mig_writerupdate.cs" />
     <Compile Include="Migrations\202404212151163_mig_writerupdate.designer.cs">
       <DependentUpon>202404212151163_mig_writerupdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404221103504_mig_writer_title_add.cs" />
+    <Compile Include="Migrations\202404221103504_mig_writer_title_add.designer.cs">
+      <DependentUpon>202404221103504_mig_writer_title_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404222224252_mig_image_size_change.cs" />
+    <Compile Include="Migrations\202404222224252_mig_image_size_change.designer.cs">
+      <DependentUpon>202404222224252_mig_image_size_change.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,6 +102,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202404212151163_mig_writerupdate.resx">
       <DependentUpon>202404212151163_mig_writerupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404221103504_mig_writer_title_add.resx">
+      <DependentUpon>202404221103504_mig_writer_title_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404222224252_mig_image_size_change.resx">
+      <DependentUpon>202404222224252_mig_image_size_change.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

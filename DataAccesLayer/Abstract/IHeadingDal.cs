@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntitiyLayer.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccesLayer.Abstract
 {
-    public   interface IHeadingDal:IRepository<IHeadingDal>
+    public   interface IHeadingDal:IRepository<Heading>
     {
 
     }
