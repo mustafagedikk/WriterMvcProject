@@ -29,6 +29,8 @@ namespace EntitiyLayer.Concrete
 
         [StringLength(50)]
         public string WriterTitle { get; set; }
+
+        public bool WriterStatus { get; set; }
         public ICollection<Heading> Headings { get; set; }
 
         public ICollection<Content> Contents { get; set; }
