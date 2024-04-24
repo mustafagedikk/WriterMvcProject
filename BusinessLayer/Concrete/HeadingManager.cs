@@ -4,6 +4,7 @@ using EntitiyLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,6 +19,10 @@ namespace BusinessLayer.Concrete
             _headingDal = headingDal;
         }
 
+
+     
+      
+
         public Heading GetByID(int id)
         {
             return _headingDal.Get(x => x.HeadingID == id);
@@ -25,7 +30,14 @@ namespace BusinessLayer.Concrete
 
         public List<Heading> GetList()
         {
-           return _headingDal.List();
+            //return _headingDal.List();
+            return _headingDal.List().Where(x => x.HeadingStatus == true).ToList();
+        }
+
+        //Sadece filtre false olanlar listelenecek
+        public List<Heading> GetListByHeadingStatus()
+        {
+            return _headingDal.List().Where(x => x.HeadingStatus == false).ToList();
         }
 
         public void HeadingAdd(Heading heading)
@@ -35,12 +47,15 @@ namespace BusinessLayer.Concrete
 
         public void HeadingDelete(Heading heading)
         {
-            _headingDal.Delete(heading);
+            heading.HeadingStatus = false;
+            _headingDal.Update(heading);
         }
 
         public void HeadingUpdate(Heading heading)
         {
             _headingDal.Update(heading);
         }
+
+        
     }
 }

@@ -18,6 +18,8 @@ namespace WriterMvcProject.Controllers
         public ActionResult Index()
         {
             var Headingvalues = hm.GetList();
+
+
             return View(Headingvalues);
         }
         [HttpGet]
@@ -36,7 +38,7 @@ namespace WriterMvcProject.Controllers
             List<SelectListItem> writerlist = (from x in wm.GetList()
                                                select new SelectListItem
                                                {
-                                                   Text = x.WriterName +" " + x.WriterSurname,
+                                                   Text = x.WriterName + " " + x.WriterSurname,
                                                    Value = x.WriterID.ToString()
                                                }
                                              ).ToList();
@@ -54,9 +56,38 @@ namespace WriterMvcProject.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult ContentByHeading()
+
+        [HttpGet]
+        public ActionResult EditHeading(int id)
         {
-            return View();
+            var headingvalue = hm.GetByID(id);
+            List<SelectListItem> Categorylist = (from x in cm.GetList() select new SelectListItem {Value=x.CategoryID.ToString(), Text=x.CategoryName
+            }
+            ).ToList();
+
+            ViewBag.vlc = Categorylist;
+            return View(headingvalue);
+        }
+
+        [HttpPost]
+        public ActionResult EditHeading(Heading heading)
+        {
+            hm.HeadingUpdate(heading);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteHeading(int id)
+        {
+            var value = hm.GetByID(id);
+          
+            hm.HeadingDelete(value);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult PassiveHeading()
+        {
+            var values = hm.GetListByHeadingStatus();
+            return View(values);
         }
 
     }

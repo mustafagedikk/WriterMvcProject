@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace BusinessLayer.Abstract
 {
@@ -16,5 +17,9 @@ namespace BusinessLayer.Abstract
         void HeadingDelete(Heading heading);
 
         void HeadingUpdate(Heading heading);
+
+
+        ///statu false olanları getireceğim////
+        List<Heading> GetListByHeadingStatus();
     }
 }
