@@ -71,7 +71,10 @@ namespace WriterMvcProject.Controllers
 
         [HttpPost]
         public ActionResult EditHeading(Heading heading)
+
+
         {
+            heading.HeadingStatus = false;
             hm.HeadingUpdate(heading);
             return RedirectToAction("Index");
         }
@@ -79,7 +82,7 @@ namespace WriterMvcProject.Controllers
         public ActionResult DeleteHeading(int id)
         {
             var value = hm.GetByID(id);
-          
+            value.HeadingStatus = false;
             hm.HeadingDelete(value);
             return RedirectToAction("Index");
         }
