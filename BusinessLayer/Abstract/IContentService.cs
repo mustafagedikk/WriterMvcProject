@@ -11,7 +11,7 @@ namespace BusinessLayer.Abstract
     {
 
         List<Content> GetList();//Liste türünde tüm tüm category değerlerini döner
-
+        List<Content> GetListByWriter(int id);
         List<Content> GetListByHeadingID(int id); ///id ye göre tüm listeyi döndür
         void ContentAdd(Content content);
 

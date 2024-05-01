@@ -86,10 +86,10 @@
                                             <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
                                             <td class="mailbox-name"><a href="/Contact/GetContactDetails/@item.ContactID">@item.UserName</a></td>
                                             <td class="mailbox-subject">
-                                                <b>@item.Subject</b> @item.Message.Substring(0,30)...
+                                                <b>@item.Subject</b> @item.Message.Substring(0, 30)...
                                             </td>
                                             <td class="mailbox-attachment"></td>
-                                            <td class="mailbox-date">5 mins ago</td>
+                                            <td class="mailbox-date"> @(((DateTime)item.ContactDate).ToString("dd-MMMMM-yyyy"))</td>
                                         </tr>
                                     }
                                 </tbody>
@@ -131,5 +131,6 @@
         <!-- /.row -->
     </section>
 
+    <script src="~/Templates/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>  @*//Side bar için eklendi*@
 </body>
 </html>

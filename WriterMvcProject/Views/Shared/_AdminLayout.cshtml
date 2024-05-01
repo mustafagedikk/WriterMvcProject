@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="~/Templates/AdminLTE-3.0.4/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+    
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -57,6 +60,10 @@ to get the desired effect
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
+                        @if (User.IsInRole("A") || User.IsInRole("B"))
+                        {
+
+
                         <li class="nav-item has-treeview menu-open">
                             <a href="/AdminCategory/Index/" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -65,6 +72,7 @@ to get the desired effect
                                 </p>
                             </a>
                         </li>
+                        }
                         <li class="nav-item">
                             <a href="/Heading/Index/" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
@@ -111,7 +119,7 @@ to get the desired effect
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="/About/Index/" class="nav-link">
                                 <i class="nav-icon fas fa-tree"></i>
                                 <p>
                                     Hakkımızda
@@ -119,7 +127,7 @@ to get the desired effect
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="/Contact/Index" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>
                                     İletişim & Mesajlar
@@ -143,7 +151,7 @@ to get the desired effect
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/gallery.html" class="nav-link">
+                            <a href="/Gallery/Index/" class="nav-link">
                                 <i class="nav-icon far fa-image"></i>
                                 <p>
                                     Galeri
@@ -151,11 +159,11 @@ to get the desired effect
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="/ErrorPage/Page404/" class="nav-link">
                                 <i class="nav-icon far fa-envelope"></i>
                                 <p>
                                     Hata Sayfaları
-                                    <i class="fas fa-angle-left right"></i>
+                                    @*<i class="fas fa-angle-left right"></i>*@
                                 </p>
                             </a>
                         </li>
@@ -197,14 +205,34 @@ to get the desired effect
     <!-- ./wrapper -->
     <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
-    <script src="~/Templates/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap -->
+    @*<script src="~/Templates/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>*@
+     @*Bootstrap*@ 
     <script src="~/Templates/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE -->
+     @*AdminLTE*@ 
     <script src="~/Templates/AdminLTE-3.0.4/dist/js/adminlte.js"></script>
-    <!-- OPTIONAL SCRIPTS -->
+     @*OPTIONAL SCRIPTS*@ 
     <script src="~/Templates/AdminLTE-3.0.4/plugins/chart.js/Chart.min.js"></script>
     <script src="~/Templates/AdminLTE-3.0.4/dist/js/demo.js"></script>
     <script src="~/Templates/AdminLTE-3.0.4/dist/js/pages/dashboard3.js"></script>
+
+    @*Sonradan eklendi Eğitim video 64*@
+
+    
+   
+    @*<script src="~/Templates/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.min.js"></script>*@
+    <script>
+        $(function () {
+            //Add text editor
+            $('#compose-textarea').summernote()
+        })</script>
+    @*<script src="~/Templates/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>*@
+    <!-- Bootstrap 4 -->
+    @*<script src="~/Templates/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>*@
+    <!-- AdminLTE App -->
+    @*<script src="~/Templates/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>*@
+    <!-- AdminLTE for demo purposes -->
+    @*<script src="~/Templates/AdminLTE-3.0.4/dist/js/demo.js"></script>*@
+    <!-- Summernote -->
+    <script src="~/Templates/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.min.js"></script>
 </body>
 </html>

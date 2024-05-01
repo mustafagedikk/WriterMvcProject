@@ -19,10 +19,6 @@ namespace BusinessLayer.Concrete
             _headingDal = headingDal;
         }
 
-
-     
-      
-
         public Heading GetByID(int id)
         {
             return _headingDal.Get(x => x.HeadingID == id);
@@ -38,6 +34,11 @@ namespace BusinessLayer.Concrete
         public List<Heading> GetListByHeadingStatus()
         {
             return _headingDal.List().Where(x => x.HeadingStatus == false).ToList();
+        }
+
+        public List<Heading> GetListByWriter(int id)
+        {
+            return _headingDal.List(x => x.WriterID == id);
         }
 
         public void HeadingAdd(Heading heading)

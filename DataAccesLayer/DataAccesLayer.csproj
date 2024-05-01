@@ -56,6 +56,8 @@
     <Compile Include="Abstract\IContactDal.cs" />
     <Compile Include="Abstract\IContentDal.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
+    <Compile Include="Abstract\IImageFileDal.cs" />
+    <Compile Include="Abstract\IMessageDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
     <Compile Include="Concrete\Repositories\CategoryRepository.cs" />
@@ -66,6 +68,8 @@
     <Compile Include="EntitiyFramework\EfContactDal.cs" />
     <Compile Include="EntitiyFramework\EfContentDal.cs" />
     <Compile Include="EntitiyFramework\EfHeadingDal.cs" />
+    <Compile Include="EntitiyFramework\EfImageFileDal.cs" />
+    <Compile Include="EntitiyFramework\EfMessageDal.cs" />
     <Compile Include="EntitiyFramework\EfWriterDal.cs" />
     <Compile Include="Migrations\202404191307437_mig1.cs" />
     <Compile Include="Migrations\202404191307437_mig1.designer.cs">
@@ -98,6 +102,18 @@
     <Compile Include="Migrations\202404261405398_mig_add_Message.cs" />
     <Compile Include="Migrations\202404261405398_mig_add_Message.designer.cs">
       <DependentUpon>202404261405398_mig_add_Message.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404281217442_mig_contact_Adddate.cs" />
+    <Compile Include="Migrations\202404281217442_mig_contact_Adddate.designer.cs">
+      <DependentUpon>202404281217442_mig_contact_Adddate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404281845155_mig_ımage_file.cs" />
+    <Compile Include="Migrations\202404281845155_mig_ımage_file.designer.cs">
+      <DependentUpon>202404281845155_mig_ımage_file.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202404282056104_mig_admin_table_.cs" />
+    <Compile Include="Migrations\202404282056104_mig_admin_table_.designer.cs">
+      <DependentUpon>202404282056104_mig_admin_table_.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -136,6 +152,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202404261405398_mig_add_Message.resx">
       <DependentUpon>202404261405398_mig_add_Message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404281217442_mig_contact_Adddate.resx">
+      <DependentUpon>202404281217442_mig_contact_Adddate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404281845155_mig_ımage_file.resx">
+      <DependentUpon>202404281845155_mig_ımage_file.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202404282056104_mig_admin_table_.resx">
+      <DependentUpon>202404282056104_mig_admin_table_.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

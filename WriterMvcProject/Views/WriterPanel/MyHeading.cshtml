@@ -1,0 +1,150 @@
+﻿@using EntitiyLayer.Concrete
+@model List<Heading>
+@{
+    ViewBag.Title = "MyHeading";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+
+<body class="hold-transition sidebar-mini">
+    <!-- Site wrapper -->
+    <!-- Navbar -->
+    <!-- /.navbar -->
+    <!-- Main Sidebar Container -->
+    <!-- Content Wrapper. Contains page content -->
+    <!-- Content Header (Page header) -->
+    <!--<section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Projects</h1>
+                </div>
+            </div>
+        </div>-->
+    <!-- /.container-fluid -->
+    <!--</section>-->
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Aktif Başlıklar</h3>
+
+
+                <div class="card-tools">
+
+
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+
+
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 5%">
+                                Başlık Adı
+                            </th>
+                            <th style="width: 5%">
+                                Oluşturma Tarihi
+
+                            </th>
+                            <th style="width: 5%" class="text-center">
+                                Yazar Bilgisi
+                            </th>
+
+                            <th style="width: 10%" class="text-center">
+                                Kategori
+                            </th>
+                            <th style="width: 10%">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+
+                            <tr>
+
+                                <td>
+                                    @item.HeadingID
+                                </td>
+
+                                <td>
+                                    @item.HeadingName
+                                </td>
+                                <td>
+                                    <a>
+
+                                    </a>
+                                    <br />
+                                    <small>
+                                        @(((DateTime)item.HeadingDate).ToString("dd-MMMMM-yyyy"))
+                                    </small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline" style="text-align:center;">
+                                        <li class="list-inline-item">
+                                            <img alt="Avatar" class="table-avatar" src="@item.Writer.WriterImage">
+                                        </li>
+                                    </ul>
+                                </td>
+
+                                <td class="project-state">
+                                    <span class="badge badge-success">@item.Category.CategoryName</span>
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-primary btn-sm" href="/WriterPanel/MyHeading/@item.HeadingID">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                       Yazılar
+                                    </a>
+                                    <a class="btn btn-info btn-sm" href="/WriterPanel/EditHeading/@item.HeadingID">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Düzenle
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="/WriterPanel/DeleteHeading/@item.HeadingID">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Sil
+                                    </a>
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+    <!-- /.content-wrapper -->
+    <!-- /.content -->
+    <!-- /.content-wrapper -->
+    @*////////////////////////**************Pasif Başlıklar************************************////////////////////*@
+
+    <script src="~/Templates/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>  @*//Side bar için eklendi*@
+</body>
+
+</html>
+
+<a href="/WriterPanel/NewHeading/" class="btn btn-primary">Yeni Başlık Ekle </a>
+

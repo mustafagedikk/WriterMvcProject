@@ -16,6 +16,8 @@ namespace WriterMvcProject.Controllers
         // GET: AdminCategory
 
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
+
+        [Authorize(Roles="B,A")]
         public ActionResult Index()
         {
             var categoryvalues = cm.GetList();

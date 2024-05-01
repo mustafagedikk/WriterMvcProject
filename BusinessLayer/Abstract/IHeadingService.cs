@@ -11,6 +11,7 @@ namespace BusinessLayer.Abstract
    public interface IHeadingService
     {
         List<Heading> GetList();
+        List<Heading> GetListByWriter(int id);
         void HeadingAdd(Heading heading);
         Heading GetByID(int id);
 
@@ -21,5 +22,7 @@ namespace BusinessLayer.Abstract
 
         ///statu false olanları getireceğim////
         List<Heading> GetListByHeadingStatus();
+
+
     }
 }

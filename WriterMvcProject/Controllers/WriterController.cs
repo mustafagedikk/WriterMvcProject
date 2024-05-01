@@ -15,6 +15,7 @@ namespace WriterMvcProject.Controllers
     {
         WriterValidator writervalidator = new WriterValidator();
         WriterManager wm = new WriterManager(new EfWriterDal());
+        HeadingManager hm = new HeadingManager(new EfHeadingDal());
         public ActionResult Index()
         {
             var Writervalues = wm.GetList();
@@ -79,5 +80,7 @@ namespace WriterMvcProject.Controllers
 
             return View();
         }
+
+        
     }
 }
