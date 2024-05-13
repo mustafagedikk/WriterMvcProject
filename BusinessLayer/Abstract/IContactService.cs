@@ -18,5 +18,9 @@ namespace BusinessLayer.Abstract
         void ContactDelete(Contact contact);
 
         void ContactUpdate(Contact contact);
+
+        int GetContactCount();
+
+        List<Contact> GetListContactSearch(string search);
     }
 }

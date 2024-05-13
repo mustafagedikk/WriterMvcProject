@@ -1,12 +1,13 @@
 ﻿@using EntitiyLayer.Concrete
-@model List<Category>
-
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Category>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
+<br />
 <table class="table table-bordered">
     <tr>
 
@@ -25,11 +26,11 @@
             <th>@item.CategoryID</th>
             <td>@item.CategoryName</td>
             <td>@item.CategoryDescription</td>
-            
-            <td><a href="/AdminCategory/DeleteCategory/@item.CategoryID" class="btn btn-outline-danger">Sil</a></td>
-            <td><a href="/AdminCategory/EditCategory/@item.CategoryID" class="btn btn-outline-warning">Güncelle</a></td>
+
+            <td><a href="/AdminCategory/DeleteCategory/@item.CategoryID" class="btn btn-outline-danger btn-sm silme">Sil</a></td>
+            <td><a href="/AdminCategory/EditCategory/@item.CategoryID" class="btn btn-outline-warning ">Güncelle</a></td>
             <td><a href="#" class="btn btn-outline-primary">Başlıklar</a></td>
-            <
+
         </tr>
     }
 
@@ -37,6 +38,13 @@
 
 
 </table>
+<script src="~/Templates/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
 
 <a href="/AdminCategory/AddCategory" class="btn btn-info">Yeni Kategori</a>
 
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+
+{
+LiElementClasses = new List<string>
+{"page-link"}
+})

@@ -42,6 +42,8 @@
                 @Html.Action("MessageListMenu", "WriterPanelMessage")
                 <!-- /.col -->
                 <div class="col-md-9">
+                    @******* başlangıç******@
+
                     @using (Html.BeginForm("NewMessage", "WriterPanelMessage", FormMethod.Post))
                     {
                         <div class="card card-primary card-outline">
@@ -63,7 +65,8 @@
                                 </div>
                                 <div class="form-group">
                                     @Html.Label("Mesaj")
-                                    <textarea id="compose-textarea" class="form-control" name="MessageContent" style="height: 300px">
+                                    @Html.ValidationMessageFor(x => x.MessageContent)
+                                    <textarea id="compose-textarea" class="form-control" name="MessageContent" style="height: 500px">
                                 
                     </textarea>
                                 </div>
@@ -78,14 +81,22 @@
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <div class="float-right">
-                                    <button type="button" class="btn btn-default"><i class="fas fa-pencil-alt"></i> Taslaklara Kaydet</button>
-                                    <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Gönder</button>
+
+
+                                    <!-- Form içeriği -->
+                                    <button type="submit" class="btn btn-default" name="submitType" value="task"><i class="fas fa-pencil-alt"></i> Taslaklara Kaydet</button>
+
+                                    <button type="submit" class="btn btn-primary" name="submitType" value="send"><i class="far fa-envelope"></i> Gönder</button>
+
+
                                 </div>
                                 <button type="reset" class="btn btn-default"><i class="fas fa-times"></i> İptal Et</button>
                             </div>
                             <!-- /.card-footer -->
                         </div>
                     }
+
+                    @******* bi******@
                     <!-- /.card -->
                 </div>
                 <!-- /.col -->
@@ -116,4 +127,3 @@
         })</script>
 </body>
 </html>
-

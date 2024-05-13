@@ -8,7 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using PagedList;
+using PagedList.Mvc;
 namespace WriterMvcProject.Controllers
 {
     public class WriterController : Controller
@@ -16,9 +17,9 @@ namespace WriterMvcProject.Controllers
         WriterValidator writervalidator = new WriterValidator();
         WriterManager wm = new WriterManager(new EfWriterDal());
         HeadingManager hm = new HeadingManager(new EfHeadingDal());
-        public ActionResult Index()
+        public ActionResult Index(int p=1)
         {
-            var Writervalues = wm.GetList();
+            var Writervalues = wm.GetList().ToPagedList(p,7);
             return View(Writervalues);
         }
 

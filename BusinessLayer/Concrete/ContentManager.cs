@@ -23,6 +23,8 @@ namespace BusinessLayer.Concrete
             _ContentDal.Insert(content);
         }
 
+      
+
         public void ContentDelete(Content content)
         {
             throw new NotImplementedException();
@@ -52,5 +54,12 @@ namespace BusinessLayer.Concrete
         {
             return _ContentDal.List(x => x.WriterID == id);
         }
+
+        public List<Content> GetlistforSearch(string p)
+        {
+            return _ContentDal.List(x => x.ContentValue.Contains(p));
+        }
+
+
     }
 }

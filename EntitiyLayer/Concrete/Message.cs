@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace EntitiyLayer.Concrete
 {
@@ -17,7 +19,11 @@ namespace EntitiyLayer.Concrete
         public string ReceiverMail { get; set; }
         [StringLength(100)]
         public string Subject { get; set; }
+        public bool Status { get; set; }
 
+        public bool TaskStatus { get; set; }
+
+       
         public string MessageContent { get; set; }
 
         public DateTime MessageDate { get; set; }

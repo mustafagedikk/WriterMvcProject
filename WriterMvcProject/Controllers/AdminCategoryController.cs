@@ -8,7 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using PagedList.Mvc;
+using PagedList;
 namespace WriterMvcProject.Controllers
 {
     public class AdminCategoryController : Controller
@@ -18,9 +19,9 @@ namespace WriterMvcProject.Controllers
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
 
         [Authorize(Roles="B,A")]
-        public ActionResult Index()
+        public ActionResult Index(int p=1)
         {
-            var categoryvalues = cm.GetList();
+            var categoryvalues = cm.GetList().ToPagedList(p, 7);
             return View(categoryvalues);
         }
         [HttpGet]
@@ -37,6 +38,7 @@ namespace WriterMvcProject.Controllers
             //********using FluentValidation.Results ile kulllanılacak; 
             if (result.IsValid)
             {
+                p.CategoryStatus = true;
                 cm.CategoryAdd(p);
                 return RedirectToAction("Index");
             }

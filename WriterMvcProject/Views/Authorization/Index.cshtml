@@ -1,0 +1,54 @@
+﻿@using EntitiyLayer.Concrete
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Admin>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<table class="table table-bordered">
+    <tr>
+
+        <th>#</th>
+        <th>Kullanıcı Maili</th>
+        <th>Yetki</th>
+        <th>Status</th>
+        <th>Pasif Bırak</th>
+        <th>Yetki Değiştir</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.AdminID</th>
+            <td>@item.AdminUserName</td>
+            <td>@item.AdminRole</td>
+            <td>Aktif</td>
+
+            <td><a href="/Authorization/DeleteCategory/@item.AdminID" class="btn btn-outline-danger btn-sm silme">Sil</a></td>
+            <td><a href="/Authorization/EditAdmin/@item.AdminID" class="btn btn-outline-warning ">Yetki Değiştir</a></td>
+
+
+        </tr>
+    }
+
+
+
+
+</table>
+<script src="~/Templates/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+
+<a href="/Authorization/AddAdmin" class="btn btn-info">Yeni Admin Ekle</a>
+<br />
+<br />
+
+
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("AllHeading", new { p }), new PagedListRenderOptions
+
+{
+LiElementClasses = new List<string>
+{"page-link"}
+})

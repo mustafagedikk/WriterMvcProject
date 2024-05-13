@@ -140,7 +140,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AdminCategoryController.cs" />
+    <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
@@ -157,6 +159,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\HeadingChart.cs" />
+    <Compile Include="Models\WriterByHeading.cs" />
+    <Compile Include="Models\WriterChart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\AdminRoleProvider.cs" />
   </ItemGroup>
@@ -2050,6 +2055,57 @@
     <Content Include="Templates\login-form-20\js\main.js" />
     <Content Include="Templates\login-form-20\js\popper.js" />
     <Content Include="Templates\login-form-20\main.html" />
+    <Content Include="Templates\web\css\aos-animation.css" />
+    <Content Include="Templates\web\css\aos.css" />
+    <Content Include="Templates\web\css\bootstrap.css" />
+    <Content Include="Templates\web\css\fontawesome-all.css" />
+    <Content Include="Templates\web\css\roadmap.css" />
+    <Content Include="Templates\web\css\simpleLightbox.css" />
+    <Content Include="Templates\web\css\snow.css" />
+    <Content Include="Templates\web\css\style.css" />
+    <Content Include="Templates\web\images\banner.jpg" />
+    <Content Include="Templates\web\images\close.png" />
+    <Content Include="Templates\web\images\contact.jpg" />
+    <Content Include="Templates\web\images\exp.jpg" />
+    <Content Include="Templates\web\images\g1.jpg" />
+    <Content Include="Templates\web\images\g2.jpg" />
+    <Content Include="Templates\web\images\g3.jpg" />
+    <Content Include="Templates\web\images\g4.jpg" />
+    <Content Include="Templates\web\images\g5.jpg" />
+    <Content Include="Templates\web\images\g6.jpg" />
+    <Content Include="Templates\web\images\g7.jpg" />
+    <Content Include="Templates\web\images\g8.jpg" />
+    <Content Include="Templates\web\images\g9.jpg" />
+    <Content Include="Templates\web\images\loader.gif" />
+    <Content Include="Templates\web\images\move_up.png" />
+    <Content Include="Templates\web\images\next.png" />
+    <Content Include="Templates\web\images\prev.png" />
+    <Content Include="Templates\web\images\serve.jpg" />
+    <Content Include="Templates\web\images\stats.jpg" />
+    <Content Include="Templates\web\images\testimonials.jpg" />
+    <Content Include="Templates\web\index.html" />
+    <Content Include="Templates\web\js\aos.js" />
+    <Content Include="Templates\web\js\bootstrap.js" />
+    <Content Include="Templates\web\js\easing.js" />
+    <Content Include="Templates\web\js\jquery-2.2.3.min.js" />
+    <Content Include="Templates\web\js\jquery.countup.js" />
+    <Content Include="Templates\web\js\jquery.roadmap.js" />
+    <Content Include="Templates\web\js\jquery.waypoints.min.js" />
+    <Content Include="Templates\web\js\move-top.js" />
+    <Content Include="Templates\web\js\simpleLightbox.js" />
+    <Content Include="Templates\web\w3layouts-license.txt" />
+    <Content Include="Templates\web\webfonts\fa-brands-400.svg" />
+    <Content Include="Templates\web\webfonts\fa-regular-400.svg" />
+    <Content Include="Templates\web\webfonts\fa-solid-900.svg" />
+    <Content Include="Templates\web\Yazar-sözlük sayfası resimleri\404.JPG" />
+    <Content Include="Templates\web\Yazar-sözlük sayfası resimleri\Başlık Sayfası.JPG" />
+    <Content Include="Templates\web\Yazar-sözlük sayfası resimleri\Chart.JPG" />
+    <Content Include="Templates\web\Yazar-sözlük sayfası resimleri\Filters.JPG" />
+    <Content Include="Templates\web\Yazar-sözlük sayfası resimleri\Galeri.JPG" />
+    <Content Include="Templates\web\Yazar-sözlük sayfası resimleri\Mesaj.JPG" />
+    <Content Include="Templates\web\Yazar-sözlük sayfası resimleri\Roles.JPG" />
+    <Content Include="Templates\web\Yazar-sözlük sayfası resimleri\Yazar.JPG" />
+    <Content Include="Templates\web\Yazar-sözlük sayfası resimleri\Yazılar.JPG" />
     <Content Include="Templates\şehir resimleri\Alaçati.jpg" />
     <Content Include="Templates\şehir resimleri\dubai.jpg" />
     <Content Include="Templates\şehir resimleri\hamburg.jpg" />
@@ -2567,11 +2623,37 @@
     <Content Include="Views\WriterPanelContent\AddContent.cshtml" />
     <Content Include="Views\WriterPanel\AllHeading.cshtml" />
     <Content Include="Views\WriterPanelContent\TodoList.cshtml" />
+    <Content Include="Views\Home\Homepage.cshtml" />
+    <Content Include="Templates\web\webfonts\fa-brands-400.eot" />
+    <Content Include="Templates\web\webfonts\fa-brands-400.ttf" />
+    <Content Include="Templates\web\webfonts\fa-brands-400.woff" />
+    <Content Include="Templates\web\webfonts\fa-brands-400.woff2" />
+    <Content Include="Templates\web\webfonts\fa-regular-400.eot" />
+    <Content Include="Templates\web\webfonts\fa-regular-400.ttf" />
+    <Content Include="Templates\web\webfonts\fa-regular-400.woff" />
+    <Content Include="Templates\web\webfonts\fa-regular-400.woff2" />
+    <Content Include="Templates\web\webfonts\fa-solid-900.eot" />
+    <Content Include="Templates\web\webfonts\fa-solid-900.ttf" />
+    <Content Include="Templates\web\webfonts\fa-solid-900.woff" />
+    <Content Include="Templates\web\webfonts\fa-solid-900.woff2" />
+    <Content Include="Views\Content\GettAllContent.cshtml" />
+    <Content Include="Views\Chart\Index.cshtml" />
+    <Content Include="Views\Heading\HeadingReport.cshtml" />
+    <Content Include="Views\Authorization\Index.cshtml" />
+    <Content Include="Views\Authorization\AddAdmin.cshtml" />
+    <Content Include="Views\Authorization\EditAdmin.cshtml" />
+    <Content Include="Views\Message\GarbageMessage.cshtml" />
+    <Content Include="Views\Message\TaskMessage.cshtml" />
+    <Content Include="Views\Chart\WriterIndex.cshtml" />
+    <Content Include="Views\Chart\WriterHeadingIndex.cshtml" />
+    <Content Include="Views\WriterPanelMessage\GarbageMessage.cshtml" />
+    <Content Include="Views\WriterPanelMessage\TaskMessage.cshtml" />
+    <Content Include="Views\Heading\HeadingbyWriter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Category\" />
+    <Folder Include="Views\HeadingChart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

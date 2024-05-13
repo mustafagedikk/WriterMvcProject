@@ -25,7 +25,27 @@ namespace BusinessLayer.Concrete
 
         public void DeleteMessage(Message message)
         {
-            throw new NotImplementedException();
+            _messageDal.Update(message);
+        }
+
+        public int GetByCountGarbageMessage(string p)
+        {
+            return _messageDal.List(x => x.ReceiverMail == p && x.Status == false || x.SenderMail == p && x.Status == false).OrderByDescending(x => x.MessageDate).ToList().Count();
+        }
+
+        public int GetByCountReceiverMessage(string p)
+        {
+            return _messageDal.List(x => x.ReceiverMail == p && x.Status == true).Count();
+        }
+
+        public int GetByCountSenderMessage(string p)
+        {
+            return _messageDal.List(x => x.SenderMail == p && x.Status == true).Count();
+        }
+
+        public int GetByCountTaskMessage(string p)
+        {
+            return _messageDal.List(x => x.SenderMail == p && x.TaskStatus == true).Count();
         }
 
         public Message GetByID(int id)
@@ -33,14 +53,37 @@ namespace BusinessLayer.Concrete
             return _messageDal.Get(x => x.MessageID == id);
         }
 
-        public List<Message> GetListInbox( string p)
+        public List<Message> GetListByTask(string p)
         {
-            return _messageDal.List(x => x.ReceiverMail == p);
+            return _messageDal.List(x => x.SenderMail == p && x.TaskStatus == true).OrderByDescending(x=>x.MessageDate).ToList();
         }
 
+        public List<Message> GetListGarbage(string p)
+        {
+            return _messageDal.List(x => x.ReceiverMail == p && x.Status==false || x.SenderMail == p && x.Status == false).OrderByDescending(x => x.MessageDate).ToList();
+        }
+
+        public List<Message> GetListInbox( string p)
+        {
+            return _messageDal.List(x => x.ReceiverMail == p && x.Status==true).OrderByDescending(x => x.MessageDate).ToList();
+        }
+
+        public List<Message> GetListInboxSearch(string p, string search)
+        {
+            return _messageDal
+                .List(x=>x.ReceiverMail==p && x.Status==true && x.MessageContent.Contains(search))
+                .ToList();
+        }
         public List<Message> GetListSendBox(string p)
         {
-            return _messageDal.List(x => x.SenderMail == p);
+            return _messageDal.List(x => x.SenderMail == p && x.Status == true && x.TaskStatus==false).OrderByDescending(x => x.MessageDate).ToList();
+        }
+
+        public List<Message> GetListSendboxSearch(string p, string search)
+        {
+            return _messageDal
+               .List(x => x.SenderMail == p && x.Status == true && x.MessageContent.Contains(search))
+               .ToList();
         }
 
         public void UpdateMessage(Message message)

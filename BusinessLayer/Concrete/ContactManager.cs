@@ -38,9 +38,19 @@ namespace BusinessLayer.Concrete
             _contactDal.Update(contact);
         }
 
+        public int GetContactCount()
+        {
+            return _contactDal.List(x=>x.ContactID>0).Count();
+        }
+
         public List<Contact> GetList()
         {
-          return  _contactDal.List();
+          return  _contactDal.List().OrderByDescending(x=>x.ContactDate).ToList();
+        }
+
+        public List<Contact> GetListContactSearch( string search)
+        {
+            return _contactDal.List(x => x.Message.Contains(search)).ToList();
         }
     }
 }

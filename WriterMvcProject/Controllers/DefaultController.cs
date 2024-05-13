@@ -24,6 +24,7 @@ namespace WriterMvcProject.Controllers
         public ActionResult Headings()
         {
             var values = hm.GetList();
+
             return View(values);
         }
     }

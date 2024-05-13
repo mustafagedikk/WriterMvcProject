@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "WriterIndex";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Writer Chart</title>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        google.charts.load('current', { packages: ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            $.ajax({
+                url: '@Url.Action("WriterChart", "Chart")',
+                dataType: 'json',
+                success: function (data) {
+                    var dataArray = [['WriterName', 'YorumSayısı']];
+                    for (var i = 0; i < data.length; i++) {
+                        dataArray.push([data[i].WriterName, data[i].YorumSayısı]);
+                    }
+                    var chartData = google.visualization.arrayToDataTable(dataArray);
+
+                    var options = {
+                        title: 'Yazar-İçerik grafiği',
+                        legend: { position: 'bottom' }
+                    };
+
+                    var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+                    chart.draw(chartData, options);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="chart_div" style="width: 1230px; height: 748px;"></div>
+</body>
+</html>

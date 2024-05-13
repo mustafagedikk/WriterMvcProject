@@ -23,6 +23,8 @@ namespace BusinessLayer.Abstract
         ///statu false olanları getireceğim////
         List<Heading> GetListByHeadingStatus();
 
+        Heading CharHeading();
+
 
     }
 }

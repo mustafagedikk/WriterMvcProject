@@ -20,6 +20,8 @@ namespace DataAccesLayer.Abstract
         void Update(T p);
 
         //***İsmi ali olan yazarlar örnek olarak bulunabilir.*****
+
+
         List<T> List(Expression<Func<T, bool>> filter);
        
     }

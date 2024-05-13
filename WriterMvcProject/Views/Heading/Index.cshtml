@@ -1,5 +1,7 @@
 ﻿@using EntitiyLayer.Concrete
-@model List<Heading>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Heading>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -67,7 +69,7 @@
                                 Yazar Bilgisi
                             </th>
 
-                            <th style="width: 10%" class="text-center">
+                            <th style="width: 5%" class="text-center">
                                 Kategori
                             </th>
                             <th style="width: 10%">
@@ -119,7 +121,7 @@
                                         </i>
                                         Düzenle
                                     </a>
-                                    <a class="btn btn-danger btn-sm" href="/Heading/DeleteHeading/@item.HeadingID">
+                                    <a class="btn btn-danger btn-sm silme" href="/Heading/DeleteHeading/@item.HeadingID">
                                         <i class="fas fa-trash">
                                         </i>
                                         Sil
@@ -150,6 +152,12 @@
 <a href="/Heading/AddHeading/" class="btn btn-primary">Yeni Başlık Ekle </a>
 <a href="/Heading/PassiveHeading/" class="btn btn-primary">Pasif Başlıkları Listele </a>
 
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+
+{
+LiElementClasses = new List<string>
+{"page-link"}
+})
 
 
 

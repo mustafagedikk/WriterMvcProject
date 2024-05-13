@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccesLayer.Concrete.Repositories
 {
-    public class CategoryRepository :ICategoryDal
+    public class CategoryRepository : ICategoryDal
     {
         Context c = new Context();
 

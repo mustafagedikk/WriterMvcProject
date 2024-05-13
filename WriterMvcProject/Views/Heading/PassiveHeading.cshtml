@@ -1,5 +1,7 @@
 ﻿@using EntitiyLayer.Concrete
-@model List<Heading>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Heading>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -66,7 +68,7 @@
                                 Yazar Bilgisi
                             </th>
 
-                            <th style="width: 10%" class="text-center">
+                            <th style="width: 5%" class="text-center">
                                 Kategori
                             </th>
                             <th style="width: 10%">
@@ -146,3 +148,11 @@
 
 
 </html>
+<script src="~/Templates/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new PagedListRenderOptions
+
+{
+LiElementClasses = new List<string>
+{"page-link"}
+})
+

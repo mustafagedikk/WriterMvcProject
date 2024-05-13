@@ -16,5 +16,19 @@ namespace BusinessLayer.Abstract
         void DeleteMessage(Message message);
 
         void UpdateMessage(Message message);
+
+        int GetByCountSenderMessage(string p);
+        int GetByCountReceiverMessage(string p);
+
+        List<Message> GetListGarbage(string p);
+        int GetByCountGarbageMessage(string p);
+        List<Message> GetListByTask(string p);
+
+        int GetByCountTaskMessage(string p);
+
+        List<Message> GetListInboxSearch(string p, string search);
+
+        List<Message> GetListSendboxSearch(string p, string search);
+
     }
 }

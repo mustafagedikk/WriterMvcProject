@@ -4,21 +4,23 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>AddCategory</h2>
+<h2>Kategori Ekle</h2>
 
 @using (Html.BeginForm("AddCategory", "AdminCategory", FormMethod.Post))
 {
     <div class="form-group">
-        @Html.LabelFor(x => x.CategoryName)
+        @Html.Label("Kategori Adı")
         @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.CategoryName)
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(x => x.CategoryDescription)
+        @Html.Label("Kategori Açıklaması")
         @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.CategoryDescription)
+       
     </div>
 
     <button type="submit" class="btn btn-outline-primary">Kaydet</button>
 }
+@*<script src="~/Templates/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>*@

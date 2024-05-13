@@ -1,9 +1,11 @@
 ﻿@using EntitiyLayer.Concrete
-@model List<Message>
+@model  List<Message>
+
 @{
-    ViewBag.Title = "Inbox";
+    ViewBag.Title = "Sendbox";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 
 
 <!DOCTYPE html>
@@ -26,20 +28,21 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-            @Html.Action("MessageListMenu","Contact")
+            @Html.Action("MessageListMenu", "Contact")
             <!-- /.col -->
             <div class="col-md-9">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">Gelen Mesajlar</h3>
+                        <h3 class="card-title">Gönderilen Mesajlar</h3>
                         <div class="card-tools">
                             <div class="input-group input-group-sm">
-                                <input type="text" class="form-control" placeholder="Mail Kutusunda ara">
-                                <div class="input-group-append">
-                                    <div class="btn btn-primary">
-                                        <i class="fas fa-search"></i>
-                                    </div>
-                                </div>
+                                @using (Html.BeginForm("Inbox", "Message", FormMethod.Post))
+                                {
+                                    <p>
+                                       @Html.TextBox("search")
+                                        <input type="submit" value="Ara" />
+                                    </p>
+                                }
                             </div>
                         </div>
                         <!-- /.card-tools -->
@@ -48,16 +51,18 @@
                     <div class="card-body p-0">
                         <div class="mailbox-controls">
                             <!-- Check all button -->
-                            <button type="button" class="btn btn-default btn-sm checkbox-toggle">
-                                <i class="far fa-square"></i>
-                            </button>
+                            @*<button type="button" class="btn btn-default btn-sm checkbox-toggle">
+                    <i class="far fa-square"></i>
+                </button>*@
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
-                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
-                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
+                                @*<button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>*@
                             </div>
                             <!-- /.btn-group -->
-                            <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
+                            <a href="/Message/Inbox/" class="btn btn-default btn-sm">
+                                <i class="fas fa-sync-alt"></i> Yenile
+                            </a>
                             <div class="float-right">
                                 1-50/200
                                 <div class="btn-group">
@@ -76,19 +81,18 @@
 
 
                                         <tr>
-                                            <td>
-                                                <div class="icheck-primary">
-                                                    <input type="checkbox" value="" id="check1">
-                                                    <label for="check1"></label>
-                                                </div>
+                                            <td type="button">
+                                                <a href="/Message/DeleteMessage/@item.MessageID">
+                                                    <i class="far fa-trash-alt"></i>
+                                                </a>
                                             </td>
-                                            <td class="mailbox-star"><a href="/Message/GetInboxMessageDetails/@item.MessageID"><i class="fas fa-star text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a href="/Message/GetInboxMessageDetails/@item.MessageID">@item.SenderMail</a></td>
+                                            <td class="mailbox-star"><a href="/Message/GetSendMessageDetails/@item.MessageID"><i class="fas fa-star text-warning"></i></a></td>
+                                            <td class="mailbox-name"><a href="/Message/GetSendMessageDetails/@item.MessageID">@item.ReceiverMail</a></td>
                                             <td class="mailbox-subject">
-                                                <b>@item.Subject</b> @item.MessageContent.Substring(0,30)
+                                                <b>@item.Subject</b> @item.MessageContent.Substring(0, 30)...
                                             </td>
                                             <td class="mailbox-attachment"></td>
-                                            <td class="mailbox-date"> @(((DateTime)item.MessageDate).ToString("dd-MMMMM-yyyy"))</td>
+                                            <td class="mailbox-date">@item.MessageDate.ToString("dd-MMMM-yyyy")</td>
                                         </tr>
                                     }
                                 </tbody>
@@ -101,16 +105,16 @@
                     <div class="card-footer p-0">
                         <div class="mailbox-controls">
                             <!-- Check all button -->
-                            <button type="button" class="btn btn-default btn-sm checkbox-toggle">
-                                <i class="far fa-square"></i>
-                            </button>
+                            @*<button type="button" class="btn btn-default btn-sm checkbox-toggle">
+                    <i class="far fa-square"></i>
+                </button>*@
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
-                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
-                                <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
+                                @*<button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>*@
                             </div>
                             <!-- /.btn-group -->
-                            <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
+                            @*<button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>*@
                             <div class="float-right">
                                 1-50/200
                                 <div class="btn-group">
@@ -132,3 +136,5 @@
 
 </body>
 </html>
+
+@*<script src="~/Templates/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>*@

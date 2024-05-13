@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using PagedList;
+using PagedList.Mvc;
 namespace WriterMvcProject.Controllers
 {
     public class HeadingController : Controller
@@ -15,13 +16,22 @@ namespace WriterMvcProject.Controllers
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
         WriterManager wm = new WriterManager(new EfWriterDal());
         // GET: Heading
-        public ActionResult Index()
+        public ActionResult Index(int p=1)
+        {
+            var Headingvalues = hm.GetList().ToPagedList(p,7);
+
+
+            return View(Headingvalues);
+        }
+
+        public ActionResult HeadingReport()
         {
             var Headingvalues = hm.GetList();
 
 
             return View(Headingvalues);
         }
+
         [HttpGet]
         public ActionResult AddHeading()
         {
@@ -52,6 +62,7 @@ namespace WriterMvcProject.Controllers
         public ActionResult AddHeading(Heading p)
         {
             p.HeadingDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            p.HeadingStatus = true;
             hm.HeadingAdd(p);
             return RedirectToAction("Index");
         }
@@ -87,11 +98,16 @@ namespace WriterMvcProject.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult PassiveHeading()
+        public ActionResult PassiveHeading(int p=1)
         {
-            var values = hm.GetListByHeadingStatus();
+            var values = hm.GetListByHeadingStatus().ToPagedList(p,7);
             return View(values);
         }
 
+        public ActionResult HeadingbyWriter(int id,int p=1)
+        {
+            var values = hm.GetListByWriter(id).ToPagedList(p,7);
+            return View(values);
+        }
     }
 }

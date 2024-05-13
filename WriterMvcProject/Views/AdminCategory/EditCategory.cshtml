@@ -5,9 +5,45 @@
 }
 <br />
 
+@*@using (Html.BeginForm("EditCategory", "AdminCategory", FormMethod.Post))
+
+
+    {
+        <div class="form-group">
+            @Html.LabelFor(x => x.CategoryID)
+            @Html.TextBoxFor(x => x.CategoryID, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.CategoryID)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.CategoryName)
+            @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.CategoryName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.CategoryDescription)
+            @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.CategoryDescription)
+        </div>
+        <br />
+        <button class="btn btn-outline-success" id="btn1">Güncelle</button>
+
+
+    }
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script>
+        $('#btn1').click(function () {
+            swal("Good job!", "You clicked the button!", "success");
+
+            // 1000 milisaniye (1 saniye) sonra belirtilen URL'ye yönlendir
+            setTimeout(function () {
+                window.location.href = "yonlendirilecek_sayfa.html";
+            }, 3000); // 1000 milisaniye = 1 saniye
+        });
+    </script>*@
+
 @using (Html.BeginForm("EditCategory", "AdminCategory", FormMethod.Post))
-
-
 {
     <div class="form-group">
         @Html.LabelFor(x => x.CategoryID)
@@ -26,5 +62,7 @@
         @Html.ValidationMessageFor(x => x.CategoryDescription)
     </div>
     <br />
-    <button class="btn btn-outline-success">Güncelle</button>
+    <button type="submit" class="btn btn-outline-success" id="güncelleme">Güncelle</button>
 }
+
+<script src="~/Templates/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
