@@ -85,7 +85,7 @@ namespace WriterMvcProject.Controllers
 
 
         {
-            heading.HeadingStatus = false;
+            heading.HeadingStatus = true;
             hm.HeadingUpdate(heading);
             return RedirectToAction("Index");
         }

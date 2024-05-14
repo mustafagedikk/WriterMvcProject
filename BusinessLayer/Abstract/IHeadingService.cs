@@ -25,6 +25,7 @@ namespace BusinessLayer.Abstract
 
         Heading CharHeading();
 
+        List<Heading> GetListByCategory(int id);
 
     }
 }

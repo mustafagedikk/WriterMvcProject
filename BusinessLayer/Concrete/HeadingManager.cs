@@ -35,6 +35,11 @@ namespace BusinessLayer.Concrete
             return _headingDal.List().Where(x => x.HeadingStatus == true).ToList();
         }
 
+        public List<Heading> GetListByCategory(int id)
+        {
+           return _headingDal.List(x => x.CategoryID == id).ToList();
+        }
+
         //Sadece filtre false olanlar listelenecek
         public List<Heading> GetListByHeadingStatus()
         {

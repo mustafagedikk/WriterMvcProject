@@ -2649,6 +2649,7 @@
     <Content Include="Views\WriterPanelMessage\GarbageMessage.cshtml" />
     <Content Include="Views\WriterPanelMessage\TaskMessage.cshtml" />
     <Content Include="Views\Heading\HeadingbyWriter.cshtml" />
+    <Content Include="Views\AdminCategory\GetlistByCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

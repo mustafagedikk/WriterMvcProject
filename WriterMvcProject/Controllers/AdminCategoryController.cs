@@ -17,11 +17,11 @@ namespace WriterMvcProject.Controllers
         // GET: AdminCategory
 
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
-
+        HeadingManager hm = new HeadingManager(new EfHeadingDal());
         [Authorize(Roles="B,A")]
         public ActionResult Index(int p=1)
         {
-            var categoryvalues = cm.GetList().ToPagedList(p, 7);
+            var categoryvalues = cm.GetList().ToPagedList(p, 8);
             return View(categoryvalues);
         }
         [HttpGet]
@@ -63,6 +63,7 @@ namespace WriterMvcProject.Controllers
         [HttpGet]
         public ActionResult EditCategory(int id)
         {
+
             var categoryvalue = cm.GetByID(id);
             return View(categoryvalue);
 
@@ -72,9 +73,16 @@ namespace WriterMvcProject.Controllers
 
         public ActionResult EditCategory(Category category)
         {
+            category.CategoryStatus = true;
             cm.CategoryUpdate(category);
             return RedirectToAction("Index");
 
+        }
+
+        public ActionResult GetlistByCategory(int id,int p=1)
+        {
+            var values = hm.GetListByCategory(id).ToPagedList(p,7);
+            return View(values);
         }
 
     }

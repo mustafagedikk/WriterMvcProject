@@ -60,9 +60,10 @@
         @Html.LabelFor(x => x.CategoryDescription)
         @Html.TextAreaFor(x => x.CategoryDescription, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.CategoryDescription)
+        @Html.HiddenFor(x=>x.CategoryStatus)
     </div>
     <br />
     <button type="submit" class="btn btn-outline-success" id="güncelleme">Güncelle</button>
 }
 
-<script src="~/Templates/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+@*<script src="~/Templates/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>*@
